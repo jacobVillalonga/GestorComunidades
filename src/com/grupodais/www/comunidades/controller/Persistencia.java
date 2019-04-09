@@ -66,6 +66,17 @@ public class Persistencia {
         em.close();
         emf.close();
     }
+    //Actualiza la Comunidad del parametro en la BDD
+    public static void deleteComunidad(int id){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("GestorComunidadesPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction ts = em.getTransaction();
+        ts.begin();
+        em.merge(id);
+        ts.commit();
+        em.close();
+        emf.close();
+    }
     
 //VIVIENDAS
     //Devuelve todas las viviendas de la comunidad del parametro
