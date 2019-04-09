@@ -140,7 +140,7 @@ public class Vivienda implements Serializable {
         Vector vector = new Vector();
         vector.addElement(this.idVivienda.toString());
         vector.addElement(this.numero);
-        vector.addElement(this.comunidadFk);
+//        vector.addElement(this.comunidadFk);
         return vector;
     }
 }

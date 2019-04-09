@@ -95,6 +95,21 @@ public class Persistencia {
         return viviendas;
         
     }
+    public static List<Vivienda> getViviendasComunidad(String comunidad){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("GestorComunidadesPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery tq = em.createNamedQuery("Vivienda.findByComunidad", Vivienda.class);
+        tq.setParameter("comunidadFk", comunidad);
+        List viviendas = tq.getResultList();
+        //si no sout, error: org.hibernate.LazyInitializationException - could not initialize proxy - no Session
+        if (viviendas.size()>0){
+            System.out.println(viviendas.get(0));
+        }
+        em.close();
+        emf.close();
+        return viviendas;
+        
+    }
     //Devuelve la vivienda con la id del parametro
     public static Vivienda getVivienda (int idViv){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("GestorComunidadesPU");

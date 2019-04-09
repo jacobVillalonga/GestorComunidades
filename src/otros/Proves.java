@@ -2,6 +2,7 @@ package otros;
 
 import com.grupodais.www.comunidades.controller.Persistencia;
 import com.grupodais.www.comunidades.model.Comunidad;
+import com.grupodais.www.comunidades.model.Vivienda;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import otros.DBProves;
@@ -57,6 +58,12 @@ public class Proves extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaViviendas = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        tfVivienda = new javax.swing.JTextField();
+        btnAddVivienda = new javax.swing.JButton();
+        btnDelVivienda = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        tfIdVivienda = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,11 +90,6 @@ public class Proves extends javax.swing.JFrame {
         jLabel1.setText("Id");
 
         tfId.setEditable(false);
-        tfId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfIdActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Nombre");
 
@@ -109,27 +111,9 @@ public class Proves extends javax.swing.JFrame {
 
         jLabel4.setText("Código postal");
 
-        tfCp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfCpActionPerformed(evt);
-            }
-        });
-
         jLabel5.setText("Población");
 
-        tfPoblacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfPoblacionActionPerformed(evt);
-            }
-        });
-
         jLabel6.setText("Provincia");
-
-        tfProvincia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfProvinciaActionPerformed(evt);
-            }
-        });
 
         btnSelect.setText("Select");
         btnSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +237,37 @@ public class Proves extends javax.swing.JFrame {
 
             }
         ));
+        tablaViviendas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaViviendasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaViviendas);
+
+        jLabel9.setText("Número");
+
+        btnAddVivienda.setText("Añadir");
+        btnAddVivienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddViviendaActionPerformed(evt);
+            }
+        });
+
+        btnDelVivienda.setText("Borrar");
+        btnDelVivienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelViviendaActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Id");
+
+        tfIdVivienda.setEditable(false);
+        tfIdVivienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdViviendaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -263,7 +277,18 @@ public class Proves extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(tfIdVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnAddVivienda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDelVivienda)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -271,8 +296,23 @@ public class Proves extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfIdVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAddVivienda)
+                            .addComponent(btnDelVivienda))
+                        .addGap(37, 80, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,13 +353,13 @@ public class Proves extends javax.swing.JFrame {
         c.setProvincia(provincia);
         if (new DBProves().insert(c)){
             clearTextFields();
-            btnSelectActionPerformed(evt);
+            muestraTablaComunidades();
             JOptionPane.showMessageDialog(null,"Insert ok");
         }else{
             JOptionPane.showMessageDialog(null,"Insert Error");
         }
     }//GEN-LAST:event_btnInsertActionPerformed
-    public void clearTextFields(){
+    private void clearTextFields(){
         tfId.setText("");
         tfNombre.setText("");
         tfDireccion.setText("");
@@ -327,9 +367,6 @@ public class Proves extends javax.swing.JFrame {
         tfPoblacion.setText("");
         tfProvincia.setText("");
     }
-    private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
-    }//GEN-LAST:event_tfIdActionPerformed
-
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
         DefaultTableModel dt = new DBProves().getData();
         tablaComunidades.setModel(dt);
@@ -340,7 +377,7 @@ public class Proves extends javax.swing.JFrame {
         String id = tfId.getText();
         com.setIdComunidad(Integer.parseInt(id));
         Persistencia.deleteObject(com);
-        btnSelectActionPerformed(evt);
+        muestraTablaComunidades();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -359,7 +396,7 @@ public class Proves extends javax.swing.JFrame {
         c.setProvincia(provincia);
         if (new DBProves().update(c)){
             clearTextFields();
-            btnSelectActionPerformed(evt);
+            muestraTablaComunidades();
             JOptionPane.showMessageDialog(null,"Update ok");
         }else{
             JOptionPane.showMessageDialog(null,"Update Error");
@@ -379,23 +416,49 @@ public class Proves extends javax.swing.JFrame {
         tfPoblacion.setText(poblacion);
         String provincia = tablaComunidades.getValueAt(tablaComunidades.getSelectedRow(), 5).toString();
         tfProvincia.setText(provincia);
-        tablaViviendas(id);
+        tablaViviendas(Integer.parseInt(id));
     }//GEN-LAST:event_tablaComunidadesMouseClicked
-    private void tablaViviendas(String id){
-        
+
+    private void btnDelViviendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelViviendaActionPerformed
+        Vivienda viv = new Vivienda();
+        int id = Integer.parseInt(tfIdVivienda.getText());
+        int idCom = Integer.parseInt(tfId.getText());
+        viv.setIdVivienda(id);
+        Persistencia.deleteObject(viv);
+        tablaViviendas(idCom);
+    }//GEN-LAST:event_btnDelViviendaActionPerformed
+
+    private void btnAddViviendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddViviendaActionPerformed
+        Vivienda viv = new Vivienda();
+        Comunidad com = new Comunidad();
+        String numero = tfVivienda.getText();
+        int idCom = Integer.parseInt(tfId.getText());
+        com.setIdComunidad(idCom);
+        viv.setNumero(numero);
+        viv.setComunidadFk(com);
+        Persistencia.insertObject(viv);
+        tablaViviendas(idCom);
+    }//GEN-LAST:event_btnAddViviendaActionPerformed
+
+    private void tablaViviendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaViviendasMouseClicked
+        String id = tablaViviendas.getValueAt(tablaViviendas.getSelectedRow(), 0).toString();
+        tfIdVivienda.setText(id);
+        String nombre = tablaViviendas.getValueAt(tablaViviendas.getSelectedRow(), 1).toString();
+        tfVivienda.setText(nombre);
+//        propietarios(id); , cuotas()id;
+    }//GEN-LAST:event_tablaViviendasMouseClicked
+
+    private void tfIdViviendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdViviendaActionPerformed
+        // delete
+    }//GEN-LAST:event_tfIdViviendaActionPerformed
+    private void tablaViviendas(int id){
+        DefaultTableModel dt = new DBProves().getViviendas(id);
+        tablaViviendas.setModel(dt);
     }
-    private void tfPoblacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPoblacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfPoblacionActionPerformed
-
-    private void tfProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProvinciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfProvinciaActionPerformed
-
-    private void tfCpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfCpActionPerformed
-
+    private void muestraTablaComunidades(){
+        DefaultTableModel dt = new DBProves().getData();
+        tablaComunidades.setModel(dt);
+    }
     /**
      * @param args the command line arguments
      */
@@ -433,6 +496,8 @@ public class Proves extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager GestorComunidadesPUEntityManager;
+    private javax.swing.JButton btnAddVivienda;
+    private javax.swing.JButton btnDelVivienda;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInsert;
     private javax.swing.JButton btnSelect;
@@ -442,6 +507,7 @@ public class Proves extends javax.swing.JFrame {
     private javax.persistence.Query comunidadQuery;
     private javax.persistence.Query comunidadQuery1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -449,6 +515,7 @@ public class Proves extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -458,8 +525,10 @@ public class Proves extends javax.swing.JFrame {
     private javax.swing.JTextField tfCp;
     private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfId;
+    private javax.swing.JTextField tfIdVivienda;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfPoblacion;
     private javax.swing.JTextField tfProvincia;
+    private javax.swing.JTextField tfVivienda;
     // End of variables declaration//GEN-END:variables
 }
