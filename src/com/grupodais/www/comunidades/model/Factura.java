@@ -6,6 +6,7 @@
 package com.grupodais.www.comunidades.model;
 
 import java.io.Serializable;
+import java.util.Vector;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -132,5 +133,15 @@ public class Factura implements Serializable {
     public String toString() {
         return "Factura{" + "idFactura=" + idFactura + ", importe=" + importe + ", fecha=" + fecha + ", concepto=" + concepto + ", comunidadFk=" + comunidadFk + '}';
     }
-
+            //devuelve los datos la factura en forma de vector de Strings para mostrarlos en una tabla
+    public Vector<String> getDataVector(){
+        Vector vector = new Vector();
+        vector.addElement(this.idFactura.toString());
+        vector.addElement(this.fecha);
+        vector.addElement(this.importe);
+        vector.addElement(this.concepto);
+//        vector.addElement(this.pagada);
+//        vector.addElement(this.comunidadFk);
+        return vector;
+    }
 }

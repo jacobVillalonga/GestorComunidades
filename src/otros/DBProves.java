@@ -7,6 +7,8 @@ package otros;
 
 import com.grupodais.www.comunidades.controller.Persistencia;
 import com.grupodais.www.comunidades.model.Comunidad;
+import com.grupodais.www.comunidades.model.Factura;
+import com.grupodais.www.comunidades.model.Propietario;
 import com.grupodais.www.comunidades.model.Vivienda;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +32,7 @@ public class DBProves {
         return true;
     }
     
-    public DefaultTableModel getData(){
+    public DefaultTableModel getComunidades(){
         DefaultTableModel dt = new DefaultTableModel();
         dt.addColumn("Id");
         dt.addColumn("Nombre");
@@ -57,4 +59,35 @@ public class DBProves {
         }
         return dt;
     }
+    public DefaultTableModel getPropietarios(int id){
+        DefaultTableModel dt = new DefaultTableModel();
+        dt.addColumn("Id");
+        dt.addColumn("Nombre");
+        dt.addColumn("Apellidos");
+        dt.addColumn("Nif");
+        dt.addColumn("Teléfono");
+        dt.addColumn("Email");
+        Vivienda viv = new Vivienda();
+        viv.setIdVivienda(id);
+        List<Propietario> props = Persistencia.getPropietariosVivienda(viv);
+        for (Propietario prop : props) {
+            dt.addRow(prop.getDataVector());
+        }
+        return dt;
+    }
+    public DefaultTableModel getFacturas(int id){
+        DefaultTableModel dt = new DefaultTableModel();
+        dt.addColumn("Id");
+        dt.addColumn("Fecha");
+        dt.addColumn("Importe");
+        dt.addColumn("Concepto");
+        Comunidad comu = new Comunidad();
+        comu.setIdComunidad(id);
+        List<Factura> facturas = Persistencia.getFacturasComunidad(comu);
+        for (Factura factura : facturas) {
+            dt.addRow(factura.getDataVector());
+        }
+        return dt;
+    }
+    
 }

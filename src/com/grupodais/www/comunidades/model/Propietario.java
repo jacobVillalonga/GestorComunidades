@@ -8,6 +8,7 @@ package com.grupodais.www.comunidades.model;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Vector;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -272,4 +273,15 @@ public class Propietario implements Serializable {
         return "Propietario{" + "idPropietario=" + idPropietario + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", telefono=" + telefono + ", telefono2=" + telefono2 + ", email=" + email + ", direccion=" + direccion + ", cp=" + cp + ", poblacion=" + poblacion + ", provincia=" + provincia + ", pais=" + pais + '}';
     }
     
+        //devuelve los datos del propietario en forma de vector de Strings para mostrarlos en una tabla
+    public Vector<String> getDataVector(){
+        Vector vector = new Vector();
+        vector.addElement(this.idPropietario.toString());
+        vector.addElement(this.nombre);
+        vector.addElement(this.apellidos);
+        vector.addElement(this.nif);
+        vector.addElement(this.telefono);
+        vector.addElement(this.email);
+        return vector;
+    }
 }
