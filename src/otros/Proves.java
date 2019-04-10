@@ -5,6 +5,7 @@ import com.grupodais.www.comunidades.model.Comunidad;
 import com.grupodais.www.comunidades.model.Vivienda;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 /**
  *
@@ -81,10 +82,10 @@ public class Proves extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        tfFechaFac = new javax.swing.JTextField();
+        tfImporteFac = new javax.swing.JTextField();
+        tfConceptoFac = new javax.swing.JTextField();
+        tfFactura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,11 +105,6 @@ public class Proves extends javax.swing.JFrame {
         tablaComunidades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaComunidadesMouseClicked(evt);
-            }
-        });
-        tablaComunidades.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tablaComunidadesPropertyChange(evt);
             }
         });
         jScrollPane1.setViewportView(tablaComunidades);
@@ -270,20 +266,9 @@ public class Proves extends javax.swing.JFrame {
                 tablaViviendasMouseClicked(evt);
             }
         });
-        tablaViviendas.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tablaViviendasPropertyChange(evt);
-            }
-        });
         jScrollPane2.setViewportView(tablaViviendas);
 
         jLabel9.setText("Número");
-
-        tfVivienda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfViviendaActionPerformed(evt);
-            }
-        });
 
         btnAddVivienda.setText("Añadir");
         btnAddVivienda.addActionListener(new java.awt.event.ActionListener() {
@@ -302,11 +287,7 @@ public class Proves extends javax.swing.JFrame {
         jLabel10.setText("Id");
 
         tfIdVivienda.setEditable(false);
-        tfIdVivienda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfIdViviendaActionPerformed(evt);
-            }
-        });
+        tfIdVivienda.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.disabledText"));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -352,7 +333,7 @@ public class Proves extends javax.swing.JFrame {
                         .addComponent(btnAddVivienda)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDelVivienda)
-                        .addGap(0, 24, Short.MAX_VALUE)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -412,7 +393,7 @@ public class Proves extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,11 +442,6 @@ public class Proves extends javax.swing.JFrame {
                 tablaFacturasMouseClicked(evt);
             }
         });
-        tablaFacturas.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tablaFacturasPropertyChange(evt);
-            }
-        });
         jScrollPane4.setViewportView(tablaFacturas);
 
         jCheckBox1.setText("Pagada");
@@ -478,12 +454,10 @@ public class Proves extends javax.swing.JFrame {
 
         jLabel16.setText("Concepto");
 
-        jTextField2.setText("0,0");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
+        tfImporteFac.setText("0,0");
+
+        tfFactura.setEditable(false);
+        tfFactura.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.disabledText"));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -498,23 +472,24 @@ public class Proves extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jCheckBox1))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tfConceptoFac)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(tfFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfFechaFac, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField3))
+                            .addComponent(tfImporteFac, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -522,23 +497,23 @@ public class Proves extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel14)
                     .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfFechaFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfImporteFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jCheckBox1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfConceptoFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11))
         );
 
@@ -606,12 +581,18 @@ public class Proves extends javax.swing.JFrame {
         tfProvincia.setText("");
     }
     
+    private void clearDataFactura(){
+        tfFactura.setText("");
+        tfFechaFac.setText("");
+        tfImporteFac.setText("0.0");
+        tfConceptoFac.setText("");
+    }
+    
     private void clearTable(DefaultTableModel dtm){
-        System.out.println("Clear table");
         dtm.getDataVector().removeAllElements();
         dtm.fireTableDataChanged();
     }
-    
+
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
         DefaultTableModel dt = new DBProves().getComunidades();
         tablaComunidades.setModel(dt);
@@ -718,33 +699,16 @@ public class Proves extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
     
-    private void tablaComunidadesPropertyChange(java.beans.PropertyChangeEvent evt) {                                              
-        // TODO add your handling code here:
-    }   
-    
-    private void tfViviendaActionPerformed(java.awt.event.ActionEvent evt) {
-    
-    }
-    
-    private void tfIdViviendaActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // delete
-    }
-    
-    private void tablaViviendasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tablaViviendasPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaViviendasPropertyChange
-
     private void tablaFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaFacturasMouseClicked
-        // TODO add your handling code here:
+        String id = tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0).toString();
+        tfFactura.setText(id);
+        String fecha = tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 1).toString();
+        tfFechaFac.setText(fecha);
+        String importe = tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 2).toString();
+        tfImporteFac.setText(importe);
+        String concepto = tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 3).toString();
+        tfConceptoFac.setText(concepto);
     }//GEN-LAST:event_tablaFacturasMouseClicked
-
-    private void tablaFacturasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tablaFacturasPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaFacturasPropertyChange
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void muestraTablaComunidades(){
         DefaultTableModel dt = new DBProves().getComunidades();
@@ -842,19 +806,19 @@ public class Proves extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lComunidad;
     private javax.swing.JTable tablaComunidades;
     private javax.swing.JTable tablaFacturas;
     private javax.swing.JTable tablaPropietarios;
     private javax.swing.JTable tablaViviendas;
+    private javax.swing.JTextField tfConceptoFac;
     private javax.swing.JTextField tfCp;
     private javax.swing.JTextField tfDireccion;
+    private javax.swing.JTextField tfFactura;
+    private javax.swing.JTextField tfFechaFac;
     private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfIdVivienda;
+    private javax.swing.JTextField tfImporteFac;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfPoblacion;
     private javax.swing.JTextField tfProvincia;
